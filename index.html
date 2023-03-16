@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Keania+One&display=swap');
+      </style>
+</head>
+
+<body>
+    <section>
+    <img src="logo.jpg" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="show">
+                <span>DAYS</span>
+                <span>HOURS</span>
+                <span>MINUTES</span>
+                <span>SECONDS</span>
+            </div>
+            <div class="hide">
+                <span id="day"></span>
+                <span id="hour"></span>
+                <span id="minute"></span>
+                <span id="second"></span>
+            </div>
+        </div>
+    </div>
+    </section>
+    <script>
+        let day = document.querySelector('#day');
+        let hours = document.querySelector('#hour');
+        let minutes = document.querySelector('#minute');
+        let seconds = document.querySelector('#second');
+
+
+        function add() {
+
+            let a = new Date();
+            let time = a.getTime();
+
+            let b = new Date("04 14 2023 12:00:00 AM");
+            let time1 = b.getTime();
+
+            let dm = time1 - time;
+
+            let days = Math.floor(dm / (1000 * 60 * 60 * 24));
+
+            let hour = Math.floor(dm % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+
+            let minute = Math.floor(dm % (1000 * 60 * 60) / (1000 * 60));
+
+            let second = Math.floor(dm % (1000 * 60) / (1000));
+
+            days = days < 10 ? "0" + days : days;
+            hour = hour < 10 ? "0" + hour : hour;
+            minute = minute < 10 ? "0" + minute : minute;
+            second = second < 10 ? "0" + second : second;
+
+            day.innerHTML = `${days}days`;
+            hours.innerHTML = `${hour}hours`;
+            minutes.innerHTML = `${minute}minutes`;
+            seconds.innerHTML = `${second}seconds`;
+        }
+        setInterval(add, 0);
+    </script>
+</body>
+
+</html>
